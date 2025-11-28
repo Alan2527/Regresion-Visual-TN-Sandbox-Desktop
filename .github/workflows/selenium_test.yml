@@ -1,4 +1,4 @@
- name: Regresión Visual TN Sandbox Desktop
+name: Regresión Visual TN Sandbox Desktop
 
 on:
   # Desencadena el flujo de trabajo manualmente
@@ -24,11 +24,13 @@ jobs:
     - name: ⬇️ Checkout del Código
       uses: actions/checkout@v4
 
-    # 1. Instalar Google Chrome (Necesario para Selenium en headless)
+    # 1. 🚀 CORRECCIÓN CLAVE: Usar la acción 'setup-chrome'
+    # Esta acción es más robusta que apt-get e instala todas las dependencias necesarias.
     - name: ⚙️ Instalar Google Chrome Headless
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
+      uses: browser-actions/setup-chrome@v1 # <--- CAMBIO AQUÍ
+      # run: |
+      #   sudo apt-get update
+      #   sudo apt-get install -y google-chrome-stable
 
     # 2. Configurar Python
     - name: 🐍 Configurar Python
